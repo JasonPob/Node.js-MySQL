@@ -28,6 +28,7 @@ function start() {
     //query all the items for sale
     connection.query("SELECT * FROM products", function (err, results) {
         if (err) throw err;
+        console.table(results);
         inquirer
             .prompt([
                 {
@@ -68,19 +69,19 @@ function start() {
             .then(function (answer) {
                 var chosenItem;
                 for (var i = 0; i < results.length; i++) {
-                    console.log(results[i]);
-                    console.log(answer.ID);
-                    console.log(typeof(results[i]));
-                    console.log(typeof(answer.ID));
+                    // console.log(results[i]);
+                    // console.log(answer.ID);
+                    // console.log(typeof(results[i]));
+                    // console.log(typeof(answer.ID));
                     if (results[i].item_id == answer.ID) {
                         chosenItem = results[i];
                     }
                 }
-                console.log(chosenItem);
-                console.log(typeof(chosenItem));
-                console.log(chosenItem.stock_quantity)
-                console.log(parseInt(chosenItem.stock_quantity));
-                console.log(chosenItem.ID);
+                // console.log(chosenItem);
+                // console.log(typeof(chosenItem));
+                // console.log(chosenItem.stock_quantity)
+                // console.log(parseInt(chosenItem.stock_quantity));
+                // console.log(chosenItem.ID);
                 // determine if there is enough units to sell
                 //try stock_quantity instead of chosenItem.unitAmount
                 if (chosenItem.stock_quantity < parseInt(answer.unitAmount)) {
